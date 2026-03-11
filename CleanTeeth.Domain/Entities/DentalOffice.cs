@@ -2,24 +2,21 @@
 
 namespace CleanTeeth.Domain.Entities;
 
-public class Patient
+public class DentalOffice
 {
+
     public Guid Id { get; private set; }
     public string Name { get; private set; } = null!;
-    public string Email { get; private set; } = null!;
-
-    public Patient(string name, string email)
-
+    public DentalOffice(String name)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
+            //throw new ArgumentNullException($"nameof(name) es requerido")
             throw new BusinessRuleException($"El {nameof(name)} es obligatorio");
         }
-
-        Id = Guid.CreateVersion7();
         Name = name;
-    
+        Id = Guid.NewGuid();
+
     }
+
 }
-
-
